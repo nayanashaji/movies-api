@@ -1,5 +1,4 @@
-// api/movies/index.js
-const movies = [
+module.exports = [
 { id: 1, title: "Inception", year: 2010, director: "Christopher Nolan", actors: ["Leonardo DiCaprio","Joseph Gordon-Levitt","Elliot Page"], runtime: 148, rating: 8.8, poster: "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg", genres: ["Action","Sci-Fi","Thriller"], description: "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO." },
 { id: 2, title: "The Dark Knight", year: 2008, director: "Christopher Nolan", actors: ["Christian Bale","Heath Ledger","Aaron Eckhart"], runtime: 152, rating: 9.0, poster: "https://m.media-amazon.com/images/I/51k0qa6YQtL._AC_.jpg", genres: ["Action","Crime","Drama"], description: "Batman raises the stakes in his war on crime as he faces a rising criminal mastermind known as the Joker." },
 { id: 3, title: "Interstellar", year: 2014, director: "Christopher Nolan", actors: ["Matthew McConaughey","Anne Hathaway","Jessica Chastain"], runtime: 169, rating: 8.6, poster: "https://m.media-amazon.com/images/I/71n58K4GcpL._AC_SL1024_.jpg", genres: ["Adventure","Drama","Sci-Fi"], description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival." },
@@ -31,46 +30,3 @@ const movies = [
 { id: 29, title: "Django Unchained", year: 2012, director: "Quentin Tarantino", actors: ["Jamie Foxx","Christoph Waltz"], runtime: 165, rating: 8.4, poster: "https://m.media-amazon.com/images/I/51rOnIjLqzL._AC_.jpg", genres: ["Drama","Western"], description: "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation." },
 { id: 30, title: "The Silence of the Lambs", year: 1991, director: "Jonathan Demme", actors: ["Jodie Foster","Anthony Hopkins"], runtime: 118, rating: 8.6, poster: "https://m.media-amazon.com/images/I/51k0qa6YQtL._AC_.jpg", genres: ["Crime","Drama","Thriller"], description: "A young FBI cadet must confide in an incarcerated cannibal to catch another serial killer who skins his victims." }
 ];
-
-// simple filter helper
-function filterMovies(query) {
-  let results = movies.slice();
-  const { q, limit, minRating, year, genre } = query || {};
-
-  if (q) {
-    const lowered = q.toLowerCase();
-    results = results.filter(m =>
-      (m.title && m.title.toLowerCase().includes(lowered)) ||
-      (m.director && m.director.toLowerCase().includes(lowered)) ||
-      (m.description && m.description.toLowerCase().includes(lowered)) ||
-      (m.actors && m.actors.join(' ').toLowerCase().includes(lowered))
-    );
-  }
-
-  if (genre) {
-    const g = genre.toLowerCase();
-    results = results.filter(m => m.genres && m.genres.some(x => x.toLowerCase() === g));
-  }
-
-  if (minRating) {
-    const min = parseFloat(minRating);
-    if (!isNaN(min)) results = results.filter(m => m.rating >= min);
-  }
-
-  if (year) {
-    const y = parseInt(year, 10);
-    if (!isNaN(y)) results = results.filter(m => m.year === y);
-  }
-
-  if (limit) {
-    const l = parseInt(limit, 10);
-    if (!isNaN(l)) results = results.slice(0, l);
-  }
-
-  return results;
-}
-
-export default function handler(req, res) {
-  const results = filterMovies(req.query);
-  res.status(200).json({ count: results.length, results });
-}
