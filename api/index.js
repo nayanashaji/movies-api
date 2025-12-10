@@ -1,0 +1,76 @@
+// api/movies/index.js
+const movies = [
+{ id: 1, title: "Inception", year: 2010, director: "Christopher Nolan", actors: ["Leonardo DiCaprio","Joseph Gordon-Levitt","Elliot Page"], runtime: 148, rating: 8.8, poster: "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg", genres: ["Action","Sci-Fi","Thriller"], description: "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO." },
+{ id: 2, title: "The Dark Knight", year: 2008, director: "Christopher Nolan", actors: ["Christian Bale","Heath Ledger","Aaron Eckhart"], runtime: 152, rating: 9.0, poster: "https://m.media-amazon.com/images/I/51k0qa6YQtL._AC_.jpg", genres: ["Action","Crime","Drama"], description: "Batman raises the stakes in his war on crime as he faces a rising criminal mastermind known as the Joker." },
+{ id: 3, title: "Interstellar", year: 2014, director: "Christopher Nolan", actors: ["Matthew McConaughey","Anne Hathaway","Jessica Chastain"], runtime: 169, rating: 8.6, poster: "https://m.media-amazon.com/images/I/71n58K4GcpL._AC_SL1024_.jpg", genres: ["Adventure","Drama","Sci-Fi"], description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival." },
+{ id: 4, title: "Fight Club", year: 1999, director: "David Fincher", actors: ["Brad Pitt","Edward Norton","Helena Bonham Carter"], runtime: 139, rating: 8.8, poster: "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg", genres: ["Drama"], description: "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much more." },
+{ id: 5, title: "The Matrix", year: 1999, director: "Lana Wachowski, Lilly Wachowski", actors: ["Keanu Reeves","Laurence Fishburne","Carrie-Anne Moss"], runtime: 136, rating: 8.7, poster: "https://m.media-amazon.com/images/I/51EG732BV3L._AC_.jpg", genres: ["Action","Sci-Fi"], description: "A computer hacker learns about the true nature of his reality and his role in the war against its controllers." },
+{ id: 6, title: "Pulp Fiction", year: 1994, director: "Quentin Tarantino", actors: ["John Travolta","Samuel L. Jackson","Uma Thurman"], runtime: 154, rating: 8.9, poster: "https://m.media-amazon.com/images/I/71c05lTE03L._AC_SY679_.jpg", genres: ["Crime","Drama"], description: "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption." },
+{ id: 7, title: "The Shawshank Redemption", year: 1994, director: "Frank Darabont", actors: ["Tim Robbins","Morgan Freeman"], runtime: 142, rating: 9.3, poster: "https://m.media-amazon.com/images/I/51NiGlapXlL._AC_.jpg", genres: ["Drama"], description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of decency." },
+{ id: 8, title: "The Godfather", year: 1972, director: "Francis Ford Coppola", actors: ["Marlon Brando","Al Pacino","James Caan"], runtime: 175, rating: 9.2, poster: "https://m.media-amazon.com/images/I/41+eK8zBwQL._AC_.jpg", genres: ["Crime","Drama"], description: "An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son." },
+{ id: 9, title: "The Godfather Part II", year: 1974, director: "Francis Ford Coppola", actors: ["Al Pacino","Robert De Niro","Diane Keaton"], runtime: 202, rating: 9.0, poster: "https://m.media-amazon.com/images/I/51rOnIjLqzL._AC_.jpg", genres: ["Crime","Drama"], description: "The early life and career of Vito Corleone in 1920s New York is portrayed while his son expands and tightens his grip on the family crime syndicate." },
+{ id: 10, title: "Forrest Gump", year: 1994, director: "Robert Zemeckis", actors: ["Tom Hanks","Robin Wright","Gary Sinise"], runtime: 142, rating: 8.8, poster: "https://m.media-amazon.com/images/I/61+5dYg0ynL._AC_SY679_.jpg", genres: ["Drama","Romance"], description: "The presidencies of Kennedy and Johnson, the Vietnam War, and other history unfold through the perspective of an Alabama man with an IQ of 75." },
+{ id: 11, title: "The Lord of the Rings: The Fellowship of the Ring", year: 2001, director: "Peter Jackson", actors: ["Elijah Wood","Ian McKellen","Viggo Mortensen"], runtime: 178, rating: 8.8, poster: "https://m.media-amazon.com/images/I/51Qvs9i5a%2BL._AC_.jpg", genres: ["Adventure","Fantasy"], description: "A meek Hobbit and eight companions set out on a journey to destroy a powerful ring and save Middle-earth from darkness." },
+{ id: 12, title: "The Lord of the Rings: The Two Towers", year: 2002, director: "Peter Jackson", actors: ["Elijah Wood","Ian McKellen","Viggo Mortensen"], runtime: 179, rating: 8.7, poster: "https://m.media-amazon.com/images/I/51Qvs9i5a%2BL._AC_.jpg", genres: ["Adventure","Fantasy"], description: "The fellowship is broken, but the quest to destroy the One Ring continues as new alliances form and old enemies rise." },
+{ id: 13, title: "The Lord of the Rings: The Return of the King", year: 2003, director: "Peter Jackson", actors: ["Elijah Wood","Ian McKellen","Viggo9 Mortensen"], runtime: 201, rating: 9.0, poster: "https://m.media-amazon.com/images/I/51Qvs9i5a%2BL._AC_.jpg", genres: ["Adventure","Fantasy"], description: "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring." },
+{ id: 14, title: "The Social Network", year: 2010, director: "David Fincher", actors: ["Jesse Eisenberg","Andrew Garfield","Justin Timberlake"], runtime: 120, rating: 7.8, poster: "https://m.media-amazon.com/images/I/51T5a4W7XlL._AC_.jpg", genres: ["Biography","Drama"], description: "The story of Facebook's founding and the lawsuits that followed as its creators climb to fame and fortune." },
+{ id: 15, title: "Whiplash", year: 2014, director: "Damien Chazelle", actors: ["Miles Teller","J.K. Simmons"], runtime: 107, rating: 8.5, poster: "https://m.media-amazon.com/images/I/81jG2j3b1tL._AC_SL1500_.jpg", genres: ["Drama","Music"], description: "A young drummer enrolls at a cutthroat music conservatory where his instructor pushes him to the brink of greatness and breakdown." },
+{ id: 16, title: "Parasite", year: 2019, director: "Bong Joon Ho", actors: ["Song Kang-ho","Lee Sun-kyun","Cho Yeo-jeong"], runtime: 132, rating: 8.6, poster: "https://m.media-amazon.com/images/I/91pR5bK0ZPL._AC_SL1500_.jpg", genres: ["Comedy","Drama","Thriller"], description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan." },
+{ id: 17, title: "Gladiator", year: 2000, director: "Ridley Scott", actors: ["Russell Crowe","Joaquin Phoenix"], runtime: 155, rating: 8.5, poster: "https://m.media-amazon.com/images/I/51A9p5f5K3L._AC_.jpg", genres: ["Action","Adventure","Drama"], description: "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery." },
+{ id: 18, title: "The Prestige", year: 2006, director: "Christopher Nolan", actors: ["Hugh Jackman","Christian Bale"], runtime: 130, rating: 8.5, poster: "https://m.media-amazon.com/images/I/51k0qa6YQtL._AC_.jpg", genres: ["Drama","Mystery","Sci-Fi"], description: "Two stage magicians engage in a competitive rivalry to create the ultimate illusion while sacrificing everything they have to outwit each other." },
+{ id: 19, title: "Memento", year: 2000, director: "Christopher Nolan", actors: ["Guy Pearce","Carrie-Anne Moss"], runtime: 113, rating: 8.4, poster: "https://m.media-amazon.com/images/I/51u5p5v5aML._AC_.jpg", genres: ["Mystery","Thriller"], description: "A man with short-term memory loss attempts to track down his wife's murderer, using a system of Polaroid photos and tattoos to record information he cannot remember." },
+{ id: 20, title: "The Departed", year: 2006, director: "Martin Scorsese", actors: ["Leonardo DiCaprio","Matt Damon","Jack Nicholson"], runtime: 151, rating: 8.5, poster: "https://m.media-amazon.com/images/I/51v5ZpFyaFL._AC_.jpg", genres: ["Crime","Drama","Thriller"], description: "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in Boston." },
+{ id: 21, title: "Whale Rider", year: 2002, director: "Niki Caro", actors: ["Keisha Castle-Hughes"], runtime: 101, rating: 7.5, poster: "https://m.media-amazon.com/images/I/51Y7G8Jq5YL._AC_.jpg", genres: ["Drama","Family"], description: "A young Maori girl challenges tradition and strives to become the chief of her tribe." },
+{ id: 22, title: "Spirited Away", year: 2001, director: "Hayao Miyazaki", actors: ["Rumi Hiiragi","Miyu Irino"], runtime: 125, rating: 8.6, poster: "https://m.media-amazon.com/images/I/51o5dnjkJ8L._AC_.jpg", genres: ["Animation","Adventure","Family"], description: "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits and where humans are changed into beasts." },
+{ id: 23, title: "City of God", year: 2002, director: "Fernando Meirelles", actors: ["Alexandre Rodrigues","Leandro Firmino"], runtime: 130, rating: 8.6, poster: "https://m.media-amazon.com/images/I/51Qb3w6RfML._AC_.jpg", genres: ["Crime","Drama"], description: "Growing up in Rio de Janeiro's Cidade de Deus, two boys take different paths: one becomes a photographer, the other a notorious criminal." },
+{ id: 24, title: "Oldboy", year: 2003, director: "Park Chan-wook", actors: ["Choi Min-sik"], runtime: 120, rating: 8.4, poster: "https://m.media-amazon.com/images/I/51p3b8fXgXL._AC_.jpg", genres: ["Action","Drama","Mystery"], description: "After being kidnapped and imprisoned for 15 years, Oh Dae-Su is released and given five days to find his captor and exact revenge." },
+{ id: 25, title: "The Lion King", year: 1994, director: "Roger Allers, Rob Minkoff", actors: ["Matthew Broderick","Jeremy Irons"], runtime: 88, rating: 8.5, poster: "https://m.media-amazon.com/images/I/51NiGlapXlL._AC_.jpg", genres: ["Animation","Adventure","Drama"], description: "A young lion prince flees his kingdom only to learn the true meaning of responsibility and bravery." },
+{ id: 26, title: "Amélie", year: 2001, director: "Jean-Pierre Jeunet", actors: ["Audrey Tautou"], runtime: 122, rating: 8.3, poster: "https://m.media-amazon.com/images/I/51Qvs9i5a%2BL._AC_.jpg", genres: ["Comedy","Romance"], description: "Amélie is an innocent and naive girl in Paris with her own sense of justice who decides to help those around her and discovers love along the way." },
+{ id: 27, title: "The Grand Budapest Hotel", year: 2014, director: "Wes Anderson", actors: ["Ralph Fiennes","Tony Revolori"], runtime: 99, rating: 8.1, poster: "https://m.media-amazon.com/images/I/71Q6v1g8xGL._AC_SL1178_.jpg", genres: ["Comedy","Drama"], description: "A writer encounters the owner of a once-grand hotel, recounting the events that led to the owner's rise and fall in the fictional Republic of Zubrowka." },
+{ id: 28, title: "La La Land", year: 2016, director: "Damien Chazelle", actors: ["Ryan Gosling","Emma Stone"], runtime: 128, rating: 8.0, poster: "https://m.media-amazon.com/images/I/81Yg7m7t1QL._AC_SL1500_.jpg", genres: ["Comedy","Drama","Music"], description: "A jazz pianist and an aspiring actress pursue their dreams in Los Angeles and fall in love, but their ambitions drive them apart." },
+{ id: 29, title: "Django Unchained", year: 2012, director: "Quentin Tarantino", actors: ["Jamie Foxx","Christoph Waltz"], runtime: 165, rating: 8.4, poster: "https://m.media-amazon.com/images/I/51rOnIjLqzL._AC_.jpg", genres: ["Drama","Western"], description: "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation." },
+{ id: 30, title: "The Silence of the Lambs", year: 1991, director: "Jonathan Demme", actors: ["Jodie Foster","Anthony Hopkins"], runtime: 118, rating: 8.6, poster: "https://m.media-amazon.com/images/I/51k0qa6YQtL._AC_.jpg", genres: ["Crime","Drama","Thriller"], description: "A young FBI cadet must confide in an incarcerated cannibal to catch another serial killer who skins his victims." }
+];
+
+// simple filter helper
+function filterMovies(query) {
+  let results = movies.slice();
+  const { q, limit, minRating, year, genre } = query || {};
+
+  if (q) {
+    const lowered = q.toLowerCase();
+    results = results.filter(m =>
+      (m.title && m.title.toLowerCase().includes(lowered)) ||
+      (m.director && m.director.toLowerCase().includes(lowered)) ||
+      (m.description && m.description.toLowerCase().includes(lowered)) ||
+      (m.actors && m.actors.join(' ').toLowerCase().includes(lowered))
+    );
+  }
+
+  if (genre) {
+    const g = genre.toLowerCase();
+    results = results.filter(m => m.genres && m.genres.some(x => x.toLowerCase() === g));
+  }
+
+  if (minRating) {
+    const min = parseFloat(minRating);
+    if (!isNaN(min)) results = results.filter(m => m.rating >= min);
+  }
+
+  if (year) {
+    const y = parseInt(year, 10);
+    if (!isNaN(y)) results = results.filter(m => m.year === y);
+  }
+
+  if (limit) {
+    const l = parseInt(limit, 10);
+    if (!isNaN(l)) results = results.slice(0, l);
+  }
+
+  return results;
+}
+
+export default function handler(req, res) {
+  const results = filterMovies(req.query);
+  res.status(200).json({ count: results.length, results });
+}
